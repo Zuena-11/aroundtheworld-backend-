@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import django_heroku
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -88,28 +87,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# # Heroku Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd8k2bp1mo7irvb',
-        'USER': 'wbowlfevpnqdyb',
-        'PORT': 5432,
-        'HOST': 'ec2-34-238-37-113.compute-1.amazonaws.com',
-        'PASSWORD': '91f703411e77bef63a63e5f22b09b6bbddf0fcd952d78a1bb5ddcaf33fabea67',
+
+# Local Database
+ DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-# Local Database
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# Heroku PostgreSQL Database
-django_heroku.settings(locals())
 
 
 # Password validation
